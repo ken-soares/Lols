@@ -20,5 +20,6 @@ As stated in the introduction, the aim of this interpreter is for me to learn ab
 Here are my learning goals:
 - [x] Learn how to make a Scanner
 - [x] Learn about the Visitor design pattern
-- [ ] Learn about the Backus-Naur Form
-- [ ] Re-learn about Recursive Descent Parsers
+- [x] Learn about the Backus-Naur Form
+- [x] Re-learn about Recursive Descent Parsers
+- [ ] Learn about Runtime Errors
