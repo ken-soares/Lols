@@ -35,6 +35,12 @@ class Interpreter implements Expr.Visitor<Object> {
                 if(left instanceof String && right instanceof String) {
                     return left + (String)right;
                 }
+                if(left instanceof String && right instanceof Double) {
+                    return left + stringify(right);
+                }
+                if(left instanceof Double && right instanceof String) {
+                    return stringify(left) + right;
+                }
             case TokenType.GREATER:
                 return (double)left > (double)right;
             case TokenType.GREATER_EQUAL:
@@ -65,6 +71,7 @@ class Interpreter implements Expr.Visitor<Object> {
 
         switch(expr.operator.type) {
             case TokenType.MINUS:
+                checkNumberOperand(expr.operator, right);
                 return -(double)right;
             case TokenType.BANG:
                 return !isTruthy(right);
@@ -72,6 +79,38 @@ class Interpreter implements Expr.Visitor<Object> {
 
         // unreachable
         return null;
+    }
+
+    void interpret(Expr expression) {
+        try{
+            Object value = evaluate(expression);
+            System.out.println(stringify(value));
+        } catch (RuntimeError e) {
+            Lols.runtimeError(e);
+        }
+    }
+
+    private String stringify(Object object) {
+        if (object == null) return "nil";
+        if(object instanceof Double) {
+            String text = object.toString();
+            if(text.endsWith(".0")) {
+                text = text.substring(0, text.length()-2);
+            }
+            return text;
+        }
+
+        return object.toString();
+    }
+
+    private void checkNumberOperand(Token op, Object operand) {
+        if(operand instanceof Double) return;
+        throw new RuntimeError(op, "Operand must be a number");
+    }
+
+    private void checkNumberOperands(Token op, Object left, Object right) {
+        if(left instanceof Double && right instanceof Double) return;
+        throw new RuntimeError(op, "Operands must be a numbers");
     }
 
     private boolean isTruthy(Object object) {

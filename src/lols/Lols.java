@@ -11,6 +11,9 @@ import java.util.List;
 public class Lols {
 
     static boolean hadError = false;
+    static boolean hadRuntimeError = false;
+
+    private static final Interpreter interpreter = new Interpreter();
 
     public static void main(String[] args) throws IOException {
         if (args.length > 1) {
@@ -29,6 +32,10 @@ public class Lols {
 
         if(hadError) {
             System.exit(64);
+        }
+
+        if (hadRuntimeError) {
+            System.exit(78);
         }
     }
 
@@ -53,13 +60,15 @@ public class Lols {
         Expr expression = parser.parse();
 
         if(hadError) return;
-        System.out.println(new ASTPrinter().print(expression));
+        interpreter.interpret(expression);
 
-        /*
-            for (Token token : tokens) {
-                System.out.println(token);
-            }
-        */
+        System.out.print("AST Debug View:");
+        System.out.println(new ASTPrinter().print(expression));
+    }
+
+    static void runtimeError(RuntimeError error) {
+        System.err.println(error.getMessage() + "\n[line " + error.token.line + "]");
+        hadRuntimeError = true;
     }
 
     static void error(int line, String message) {
