@@ -25,6 +25,9 @@ class Interpreter implements Expr.Visitor<Object> {
             case TokenType.MINUS:
                 return (double)left - (double)right;
             case TokenType.SLASH:
+                if((double)right == 0.0f) {
+                    throw new RuntimeError(expr.operator, "Division by zero");
+                }
                 return (double)left / (double)right;
             case TokenType.STAR:
                 return (double)left * (double)right;
