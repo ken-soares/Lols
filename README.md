@@ -6,6 +6,10 @@
 ## Grammar Definition
 Grammar in variant of Backus-Naur form
 ```
+program    : statement* EOF ;
+statement  : exprStmt | printStmt ;
+exprStmt   : expression ";" ;
+printStmt  : "print" expression ";" ;
 expression : equality
 equality   : comparison (( "==" | "!=") comparision)*;
 comparison : term (("<" | "=<" | ">" | "=>") term)*;
