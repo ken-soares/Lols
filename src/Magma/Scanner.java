@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -130,7 +130,7 @@ public class Scanner {
                 }else if(isAlpha(c)){
                     identifier();
                 } else {
-                    Lols.error(line, "Unexpected character '" + c + "'");
+                    Magma.error(line, "Unexpected character '" + c + "'");
                 }
                 break;
         }
@@ -202,7 +202,7 @@ public class Scanner {
         }
 
         if (isAtEnd()) {
-            Lols.error(line, "Unexpected end of string");
+            Magma.error(line, "Unexpected end of string");
             return;
         }
 

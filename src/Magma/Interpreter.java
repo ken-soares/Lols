@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 import java.util.List;
 
@@ -96,7 +96,7 @@ class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
                 execute(s);
             }
         } catch (RuntimeError e) {
-            Lols.runtimeError(e);
+            Magma.runtimeError(e);
         }
     }
 

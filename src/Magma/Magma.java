@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Lols {
+public class Magma {
 
     static boolean hadError = false;
     static boolean hadRuntimeError = false;
@@ -17,7 +17,7 @@ public class Lols {
 
     public static void main(String[] args) throws IOException {
         if (args.length > 1) {
-            System.out.println("Usage: java Lols <file>");
+            System.out.println("Usage: java Magma <file>");
             System.exit(64);
         } else if (args.length == 1) {
             runFile(args[0]);
@@ -44,7 +44,7 @@ public class Lols {
         BufferedReader reader = new BufferedReader(input);
 
         for(;;) {
-            System.out.print("Lols> ");
+            System.out.print("Magma> ");
             String line = reader.readLine();
             if (line == null) break;
             run(line);

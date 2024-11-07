@@ -1,4 +1,4 @@
-# Lols scripting language
+# Magma scripting language
 
 ## Building
 

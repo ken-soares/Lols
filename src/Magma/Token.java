@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 public class Token {
     final TokenType type;

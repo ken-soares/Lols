@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 public class RuntimeError extends RuntimeException {
     final Token token;

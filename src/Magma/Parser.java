@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,7 +137,7 @@ public class Parser {
     }
 
     private ParseError error(Token token, String message) {
-        Lols.error(token, message);
+        Magma.error(token, message);
         return new ParseError();
     }
 

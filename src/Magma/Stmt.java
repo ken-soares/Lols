@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 import java.util.List;
 

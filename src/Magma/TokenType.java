@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 public enum TokenType {
     // single character tokens

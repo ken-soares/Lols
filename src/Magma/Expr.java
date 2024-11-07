@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 abstract class Expr {
     interface Visitor<R> {

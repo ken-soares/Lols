@@ -1,4 +1,4 @@
-package lols;
+package Magma;
 
 class ASTPrinter implements Expr.Visitor<String> {
 
